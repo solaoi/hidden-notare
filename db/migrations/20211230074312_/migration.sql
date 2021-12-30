@@ -1,0 +1,20 @@
+-- CreateTable
+CREATE TABLE "Tare" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    "name" TEXT NOT NULL,
+    "url" TEXT NOT NULL,
+    "method" TEXT NOT NULL,
+    "body" TEXT NOT NULL,
+    "header" TEXT NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Response" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    "tareId" INTEGER NOT NULL,
+    CONSTRAINT "Response_tareId_fkey" FOREIGN KEY ("tareId") REFERENCES "Tare" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+);
